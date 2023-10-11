@@ -21,8 +21,6 @@ export const TablePokemon = () => {
 
     const [pokemon, setPokemon] = useState([])
 
-    
-
     useEffect(() => {
         getDataApi(25,0).then((data)=> setPokemon(data))
     },[])

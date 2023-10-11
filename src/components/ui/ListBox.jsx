@@ -5,7 +5,7 @@ import { OptionBtn } from './OptionBtn'
 
 export const ListBox = ({name, type, poke, isActive}) => {
 
-    console.log(poke)
+    // console.log(poke)
 
   return (
     <>

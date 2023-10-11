@@ -1,7 +1,5 @@
-// import dotenv from 'dotenv';
-// import * as dotenv from 'dotenv'
-// import 'dotenv/config'
-// dotenv.config();
+const linkOneType = 'http://localhost:8080/pokeapi/pokeType/?limit=1';
+const linkTypes = 'http://localhost:8080/pokeapi/pokeType';
 
 export const navInfoLinks = [
     {
@@ -14,12 +12,22 @@ export const navInfoLinks = [
     },
 ]
 
+
 export const getDataApi = async (limit, since) => {
 
-    // const data = await fetch(`${env.POKEMON_API}?limit=${limit}&since=${since}`)
+    // const data = await fetch(`${linkPokemon}?limit=${limit}&since=${since}`)
     const data = await fetch(`http://localhost:8080/pokeapi/pokemon/?limit=${limit}&since=${since}`)
     const pokemonData = await data.json()
 
     // console.log(pokemonData)
     return pokemonData;
+}
+
+export const getTypeApi = async () => {
+
+    const data = await fetch('http://localhost:8080/pokeapi/pokeType')
+    const typeDataAll = await data.json()
+
+    // console.log(typeDataAll)
+    return typeDataAll;
 }

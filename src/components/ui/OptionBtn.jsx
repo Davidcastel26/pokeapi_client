@@ -1,6 +1,7 @@
 import { Button, Stack } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import React from 'react'
+import { BtnUpdate } from './BtnCustom'
 
 export const OptionBtn = () => {
   return (
@@ -11,9 +12,10 @@ export const OptionBtn = () => {
             variant='solid'
         >
         </Button>
-        <Button rightIcon={<EditIcon />} colorScheme='blue' variant='outline'>
+        {/* <Button rightIcon={<EditIcon />} colorScheme='blue' variant='outline'>
             edit
-        </Button>
+        </Button> */}
+        <BtnUpdate />
     </Stack>
   )
 }
