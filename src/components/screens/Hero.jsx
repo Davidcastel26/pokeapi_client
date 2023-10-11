@@ -1,6 +1,12 @@
+import { PokemonClient } from "../PokemonClient"
 
 export const Hero = () => {
+
+  // do the fetch from the pokemons
+
   return (
-    <div>Hero</div>
+    <div>
+      <PokemonClient />
+    </div>
   )
 }
