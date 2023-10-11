@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
+// import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
+// import { CloseButton } from '@chakra-ui/react'
+import {HamburgerIcon, CloseIcon} from '@chakra-ui/icons'
 import { NavLink } from './NavLink'
-import { navInfoLinks } from '../utils/data'
+// import { navInfoLinks } from '../utils/data'
 import ToggleColorMode from './ui/btnColorMode'
 import { MenuOverlay } from './ui/MenuOverlay'
 
@@ -23,14 +25,14 @@ export const Navbar = () => {
                   onClick={() => setNavbarOpen(!navbarOpen)}
                   className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
               >
-                  <Bars3Icon className="h-5 w-5"/>
+                  <HamburgerIcon className="h-5 w-5"/>
               </button>
           ): (
               <button
                   onClick={() => setNavbarOpen(!navbarOpen)} 
                   className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
               >
-                  <XMarkIcon className="h-5 w-5"/>
+                  <CloseIcon className="h-5 w-5"/>
               </button>
           )
         }
