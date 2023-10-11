@@ -8,11 +8,14 @@ import {
     Td,
     TableCaption,
     TableContainer,
+    Tfoot,
+    Stack,
+    Button,
   } from '@chakra-ui/react'
-
-  import { ListBox } from './ui/ListBox'
-  import { Search } from './Search'
+import { ListBox } from './ui/ListBox'
+import { Search } from './Search'
 import { getDataApi } from '../utils/data'
+import { PagesPoke } from './ui/PagesPoke'
 
 export const TablePokemon = () => {
 
@@ -21,7 +24,7 @@ export const TablePokemon = () => {
     
 
     useEffect(() => {
-        getDataApi(5,0).then((data)=> setPokemon(data))
+        getDataApi(25,0).then((data)=> setPokemon(data))
     },[])
 
   return (
@@ -57,6 +60,9 @@ export const TablePokemon = () => {
             ))
         }
       </Tbody>
+      <Tfoot>
+       <PagesPoke />
+      </Tfoot>
     </Table>
     </TableContainer>
 

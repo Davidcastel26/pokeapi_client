@@ -1,5 +1,7 @@
-import { Td, Tr, propNames } from '@chakra-ui/react'
 import React from 'react'
+import { Stack, Td, Tr, propNames } from '@chakra-ui/react'
+import { Switch } from '@chakra-ui/react'
+import { OptionBtn } from './OptionBtn'
 
 export const ListBox = ({name, type, poke, isActive}) => {
 
@@ -23,7 +25,31 @@ export const ListBox = ({name, type, poke, isActive}) => {
                 ))
             : <Td> No evoultion chain</Td>
           }
-          <Td>{isActive ? "true" :"false"}</Td>
+          <Td>
+            {
+                isActive 
+                ? <Stack direction='row'>
+                    <Switch 
+                        isChecked 
+                        id='isChecked' 
+                        colorScheme='teal' 
+                        size='lg' 
+                    />
+                </Stack>
+                :
+                <Stack direction='row'>
+                    <Switch 
+                        isReadOnly
+                        colorScheme='teal' 
+                        size='lg' 
+                        
+                    />
+                </Stack>
+            }
+          </Td>
+          <Td>
+            <OptionBtn />
+          </Td>
     </>
   )
 }
