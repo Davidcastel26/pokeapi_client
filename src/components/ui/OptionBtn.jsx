@@ -2,19 +2,24 @@ import { Button, Stack } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import React from 'react'
 import { BtnUpdate } from './BtnCustom'
+import { handleDelete } from '../../utils/data'
 
-export const OptionBtn = () => {
+export const OptionBtn = ({id, pokemon, setPokemon}) => {
+
+  // const filterList = () => {
+  //   setPokemon( pokemon.filter(( e ) => id !== e.id))
+  // }
+
   return (
     <Stack direction='row' spacing={2}  >
         <Button
+            onClick={() => handleDelete(id, setPokemon)}
             leftIcon={<DeleteIcon />} 
             colorScheme='pink' 
             variant='solid'
         >
         </Button>
-        {/* <Button rightIcon={<EditIcon />} colorScheme='blue' variant='outline'>
-            edit
-        </Button> */}
+        
         <BtnUpdate />
     </Stack>
   )

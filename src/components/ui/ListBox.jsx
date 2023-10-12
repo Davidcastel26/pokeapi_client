@@ -1,11 +1,20 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Stack, Td, Tr, propNames } from '@chakra-ui/react'
 import { Switch } from '@chakra-ui/react'
 import { OptionBtn } from './OptionBtn'
+import { setPokenStateApi } from '../../utils/data'
 
-export const ListBox = ({name, type, poke, isActive}) => {
+export const ListBox = ({id, name, type, poke, isActive, setPokemon, pokemon}) => {
 
     // console.log(poke)
+    const [pokeState, setPokeState] = useState(isActive);
+
+    const changeState = (id) => {
+      setPokeState(() => {
+        setPokenStateApi(id, { state: !pokeState });
+        return !pokeState;
+      });
+    };
 
   return (
     <>
@@ -26,29 +35,28 @@ export const ListBox = ({name, type, poke, isActive}) => {
             : <Td> No evoultion chain</Td>
           }
           <Td>
-            {
-                isActive 
-                ? <Stack direction='row'>
-                    <Switch 
-                        isChecked 
-                        id='isChecked' 
-                        colorScheme='teal' 
-                        size='lg' 
-                    />
-                </Stack>
-                :
-                <Stack direction='row'>
-                    <Switch 
-                        isReadOnly
-                        colorScheme='teal' 
-                        size='lg' 
-                        
-                    />
-                </Stack>
-            }
+          {pokeState ? (
+          <Stack direction="row">
+            <Switch
+              isChecked={pokeState}
+              id="isChecked"
+              colorScheme="teal"
+              size="lg"
+              onChange={() => changeState(poke.idPokemon)}
+            />
+          </Stack>
+        ) : (
+          <Stack direction="row">
+            <Switch
+              colorScheme="teal"
+              size="lg"
+              onChange={() => changeState(poke.idPokemon)}
+            />
+          </Stack>
+        )}
           </Td>
           <Td>
-            <OptionBtn />
+            <OptionBtn id={id} pokemon={pokemon} setPokemon={setPokemon}/>
           </Td>
     </>
   )

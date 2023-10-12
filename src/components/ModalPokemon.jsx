@@ -10,8 +10,14 @@ import {
     Box,
     Button,
     useDisclosure,
+    VStack, 
+    ButtonGroup,
+    Heading,   
+    Text
   } from '@chakra-ui/react'
+
 import { AddIcon } from '@chakra-ui/icons'
+import { Formik, Field, Form } from 'formik';
 
 export const ModalPokemon = ({finalRef, isOpen, onClose}) => {
     // ReturnFocus() {
@@ -29,15 +35,20 @@ export const ModalPokemon = ({finalRef, isOpen, onClose}) => {
               <ModalContent>
                 <ModalHeader>Modal Title</ModalHeader>
                 <ModalCloseButton />
-                <ModalBody>
-                  {/* <Lorem count={2} /> */}
-                </ModalBody>
+               
+                  <ModalBody>
+
+        
+                    
+                  </ModalBody>
+                    
+                
       
                 <ModalFooter>
                   <Button colorScheme='blue' mr={3} onClick={onClose}>
                     Cancel
                   </Button>
-                  <Button variant='ghost'>Create</Button>
+                  <Button variant='ghost' type="submit">Create</Button>
                 </ModalFooter>
               </ModalContent>
             </Modal>

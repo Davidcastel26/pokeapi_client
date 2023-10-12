@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody, CardFooter, SimpleGrid, Heading, Button, Text } from '@chakra-ui/react'
+import { CardHeader, CardBody, CardFooter, Heading, Button, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
 export const CartType = ({typeName, pokemonType, id}) => {

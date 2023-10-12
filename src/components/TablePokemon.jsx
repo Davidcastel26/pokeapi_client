@@ -14,22 +14,24 @@ import {
   } from '@chakra-ui/react'
 import { ListBox } from './ui/ListBox'
 import { Search } from './Search'
-import { getDataApi } from '../utils/data'
+import { getDataApi, handleDelete } from '../utils/data'
 import { PagesPoke } from './ui/PagesPoke'
+// handleDelete
 
-export const TablePokemon = () => {
+export const TablePokemon = ({}) => {
 
     const [pokemon, setPokemon] = useState([])
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        getDataApi(25,0).then((data)=> setPokemon(data))
-    },[])
+      getDataApi(25, (page -1) * 25).then((data)=> setPokemon(data))
+    },[page])
 
   return (
     <>
     <div className='mb-6'>
     <Search />
-
+    
     </div>
     <div>
     <TableContainer>
@@ -49,6 +51,9 @@ export const TablePokemon = () => {
             pokemon.map((poke) => (
                 <Tr key={poke.idPokemon} >
                     <ListBox 
+                        setPokemon={setPokemon}
+                        pokemon={pokemon}
+                        id={poke.idPokemon}
                         name={poke.name} 
                         type={poke.type.typeName}
                         isActive={poke.isActive}
@@ -59,7 +64,10 @@ export const TablePokemon = () => {
         }
       </Tbody>
       <Tfoot>
-       <PagesPoke />
+      <PagesPoke 
+       currentPage={page}
+       onPageChange={(pageNumber) => setPage(pageNumber)}
+       />
       </Tfoot>
     </Table>
     </TableContainer>
