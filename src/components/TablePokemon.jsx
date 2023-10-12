@@ -5,34 +5,52 @@ import {
     Tbody,
     Tr,
     Th,
-    Td,
     TableCaption,
     TableContainer,
     Tfoot,
     Stack,
     Button,
+    Input
   } from '@chakra-ui/react'
 import { ListBox } from './ui/ListBox'
-import { Search } from './Search'
-import { getDataApi, handleDelete } from '../utils/data'
+import { getDataApi, searchPokemonsApi } from '../utils/data'
 import { PagesPoke } from './ui/PagesPoke'
-// handleDelete
-
 export const TablePokemon = ({}) => {
-
+  const [searchTerm, setSearchTerm] = useState('');
     const [pokemon, setPokemon] = useState([])
     const [page, setPage] = useState(1);
 
     useEffect(() => {
-      getDataApi(25, (page -1) * 25).then((data)=> setPokemon(data))
-    },[page])
+      if (searchTerm) {
+        searchPokemonsApi(searchTerm).then((data) => setPokemon(data));
+      } else {
+        getDataApi(25, (page - 1) * 25).then((data) => setPokemon(data));
+      }
+    }, [searchTerm, page]);
+
+    const handleSearchInputChange = (event) => {
+      setSearchTerm(event.target.value);
+    };
+
+    const clearSearchInput = () => {
+      setSearchTerm('');
+    };
+  
 
   return (
     <>
-    <div className='mb-6'>
-    <Search />
-    
-    </div>
+    <Stack spacing={3}>
+        <Input
+          placeholder="Search...."
+          size="lg"
+          type="text"
+          value={searchTerm}
+          onChange={handleSearchInputChange}
+        />
+        <Button onClick={() => searchPokemonsApi(searchTerm)} style={{padding: "10px"}}>Search</Button>
+        <Button onClick={clearSearchInput}>Clear</Button>
+      </Stack>
+
     <div>
     <TableContainer>
     <Table variant='striped' colorScheme='teal'>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {
     Modal,
     ModalOverlay,
@@ -7,6 +7,7 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
+    Select,
     Box,
     Button,
     useDisclosure,
@@ -20,21 +21,34 @@ import { AddIcon } from '@chakra-ui/icons'
 // import { Formik, Field, Form } from 'formik';
 import { Formik, Form } from 'formik'
 import { Textfield } from './ui/TextField'
+import { getTypeApi } from '../utils/data'
 
 export const ModalPokemon = ({finalRef, isOpen, onClose}) => {
-    // ReturnFocus() {
-        // const { isOpen, onOpen, onClose } = useDisclosure()
-        // const finalRef = React.useRef(null)
+
+        // console.log(getTypeApi())
+
+        const [type, setfirst] = useState([])
+        const [seletedValue, setSelectedValue] = useState('')
+
+        const handleChange = (event ) => {
+          setSelectedValue(event.target.value)
+          // console.log(event.target.value)
+        }
+
+        // console.log(handleChange)
+
+        useEffect(() => {
+          getTypeApi().then(types => setfirst(types))
+        }, [])
+        
 
         const submitt = (values, actions) => {
 
-          // console.log('submiteand al gran puta pero en minusculas');
-  
           const vals = {...values}
               actions.resetForm()
               fetch("http://localhost:8080/pokeapi/pokemon", {
                   method: "POST",
-                  credentials:"include",
+                  // credentials:"include",
                   headers:{
                       "Content-Type": "application/json"
                   },
@@ -73,7 +87,7 @@ export const ModalPokemon = ({finalRef, isOpen, onClose}) => {
                 <ModalCloseButton />
                 
                 <Formik 
-                  initialValues={{ name: "", typeId:""}}
+                  initialValues={{ name:"", typeId:""}}
                   onSubmit={submitt}
                 >
                   
@@ -91,16 +105,28 @@ export const ModalPokemon = ({finalRef, isOpen, onClose}) => {
                       {/* <Text as="p" color="red.500"> { errorSigUp }</Text> */}
                       {/* <ModalBody> */}
                       <Textfield label="Pokemon Name" name="name" placeholder="Enter a Pokemon name" autoComplete="off" type="text" />
-                      <Textfield label="Pokemon Type" name="typeId" placeholder="Enter a type for pokemon" autoComplete="off" type="text" />
+                      {/* <Textfield label="Pokemon Type" name="typeId" placeholder="Enter a type for pokemon" autoComplete="off" type="text" /> */}
+                      <Select placeholder='Select option' onChange={handleChange}>
+                      {
+                          type.map( t => {
+                            
+                            return <option name={t.idTypes} value={t.idTypes} key={t.idTypes}>
+                              {
+                                t.typeName
+                              }
+                            </option>
+                          })
+                        }
+                      </Select>
                       {/* </ModalBody>   */}
                       {/* <ButtonGroup className='mb-8'> */}
                       <ButtonGroup className='mt-10' >
                         {/* <Button colorScheme='blue' mr={3} onClick={onClose}> */}
-                        <Button colorScheme='blue' mr={3} onClick={onClose}>
+                        <Button variant='ghost' mr={3} onClick={onClose}>
                           Cancel
                         </Button>
                         {/* <Button onClick={() => navigate("/register")} >Create Account</Button> */}
-                        <Button variant='ghost' type="submit">Create</Button>
+                        <Button  colorScheme='blue' type="submit">Create</Button>
                       </ButtonGroup>
                   </VStack>
                     {/* ------------------------------------------*/}

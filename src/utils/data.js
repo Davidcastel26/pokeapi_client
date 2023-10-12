@@ -67,3 +67,15 @@ export const setPokenStateApi = async (id, body) => {
         body: JSON.stringify(body)
   }).then(() => console.log("changed pokemon state"))
 }
+
+export const searchPokemonsApi = async (searchParam) => {
+  const data = await fetch(`${url}/pokeapi/pokemon/search`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ searchParam }),
+  });
+
+  return await data.json();
+};
