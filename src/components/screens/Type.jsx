@@ -22,7 +22,6 @@ export const Type = () => {
     return () => {};
   }, []);
 
-  // Slice the types.pokemon array into pages, with 5 items per page.
   const paginatedPokemon = types.pokemon?.slice(
     (currentPage - 1) * 5,
     currentPage * 5
@@ -30,29 +29,16 @@ export const Type = () => {
 
   return (
     <div>
-      <p className="text-xl md:text-2xl text-black font-semibold py-5 capitalize">
+      <div className="flex flex-wrap items-center justify-between mx-auto py-2 px-4 mb-8">
+
+      
+      <Text fontSize='4xl'>
         Type: {types.typeName}
-      </p>
-      <SimpleGrid
-        spacing={4}
-        templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
-      >
-        {paginatedPokemon?.map((e) => (
-          // <ListItem key={e.idPokemon}>id: {e.idPokemon}, name: {e.name}</ListItem>
-
-          <Card key={e.idPokemon}>
-            <CardHeader>
-              <Heading size="md">{e.name}</Heading>
-            </CardHeader>
-            <CardBody>
-              <Text>Id: {e.idPokemon}</Text>
-            </CardBody>
-          </Card>
-        ))}
-      </SimpleGrid>
-
-      {/* Pagination buttons */}
-      <Stack spacing={3} pt={4} direction="row" align="center">
+        </Text>
+        <Text fontSize={'2xl'}>
+        
+        </Text>
+        <Stack spacing={3} pt={4} direction="row" align="center">
         <Button
           colorScheme="teal"
           size="xs"
@@ -70,6 +56,25 @@ export const Type = () => {
           Next
         </Button>
         </Stack>
+        </div>
+      <SimpleGrid
+        spacing={4}
+        templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
+      >
+        {paginatedPokemon?.map((e) => (
+
+          <Card key={e.idPokemon}>
+            <CardHeader>
+              <Heading size="md">{e.name}</Heading>
+            </CardHeader>
+            <CardBody>
+              <Text>Id: {e.idPokemon}</Text>
+            </CardBody>
+          </Card>
+        ))}
+      </SimpleGrid>
+
+     
     </div>
   );
 };

@@ -4,6 +4,7 @@ import './index.css'
 import { Hero } from "./components/screens/Hero"
 import { Types } from "./components/screens/Types"
 import { Type } from "./components/screens/Type"
+import { Home } from "./components/screens/Home"
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
        <Navbar /> 
        <div className="container mt-28 mx-auto px-12 py-4">
         <Routes>
+          <Route path="/" element={<Home/>} />
           <Route path="/hero" element={<Hero/>} />
           <Route path="/types" element={<Types />} />
           <Route path="/type/:id" element={<Type />} />

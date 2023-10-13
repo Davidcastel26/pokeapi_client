@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import {
     Table,
     Thead,
@@ -11,10 +11,11 @@ import {
     Stack,
     Button,
     Input
-  } from '@chakra-ui/react'
-import { ListBox } from './ui/ListBox'
-import { getDataApi, searchPokemonsApi } from '../utils/data'
-import { PagesPoke } from './ui/PagesPoke'
+  } from '@chakra-ui/react';
+import { ListBox } from './ui/ListBox';
+import { getDataApi, searchPokemonsApi } from '../utils/data';
+import { PagesPoke } from './ui/PagesPoke';
+
 export const TablePokemon = ({}) => {
   const [searchTerm, setSearchTerm] = useState('');
     const [pokemon, setPokemon] = useState([])
@@ -39,19 +40,32 @@ export const TablePokemon = ({}) => {
 
   return (
     <>
-    <Stack spacing={3}>
+    <div>
+    {/* <Stack spacing={3} direction='colum'> */}
+    <div className=" w-full sm:w-fit ">
         <Input
           placeholder="Search...."
-          size="lg"
+          // size="lg"
+          // width='auto'
+          className='mb-4 sm:w-4 '
           type="text"
           value={searchTerm}
           onChange={handleSearchInputChange}
         />
-        <Button onClick={() => searchPokemonsApi(searchTerm)} style={{padding: "10px"}}>Search</Button>
-        <Button onClick={clearSearchInput}>Clear</Button>
-      </Stack>
+        {/* <Stack direction='row'  spacing={4} align='center'> */}
+      
+        <Button 
+          className="btn px-6 py-3 w-full sm:w-fit rounded-full mr-4 mb-3"
+          onClick={() => searchPokemonsApi(searchTerm)}>Search</Button>
+        <Button 
+          className="btn px-6 py-3 w-full sm:w-fit rounded-full mr-4 mb-3"
+          onClick={clearSearchInput} > Clear </Button>
 
-    <div>
+        {/* </Stack> */}
+    </div>
+    {/* </Stack> */}
+
+    
     <TableContainer>
     <Table variant='striped' colorScheme='teal'>
       <TableCaption>Pokemons API</TableCaption>

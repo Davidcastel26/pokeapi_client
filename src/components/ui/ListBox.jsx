@@ -6,7 +6,6 @@ import { setPokenStateApi } from '../../utils/data'
 
 export const ListBox = ({id, name, type, poke, isActive, setPokemon, pokemon}) => {
 
-    // console.log(poke)
     const [pokeState, setPokeState] = useState(isActive);
 
     const changeState = (id) => {

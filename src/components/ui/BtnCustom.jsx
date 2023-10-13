@@ -10,7 +10,7 @@ export const BtnCreate = () => {
 
   return (
     <>
-    <Button rightIcon={<AddIcon />} mt={4} onClick={onOpen}>
+    <Button className='w-full sm:w-fit rounded-full ' rightIcon={<AddIcon />} mt={2} onClick={onOpen}>
      Create  
     </Button>
 
@@ -30,13 +30,11 @@ export const BtnUpdate = () => {
   return (
     <>
     <Button 
-      // mt={4} 
       onClick={onOpen} 
       colorScheme='blue' 
       variant='outline'
       rightIcon={<EditIcon />}  
     >
-     {/* <span className='m-2'> </span>  <AddIcon /> */}
      edit
     </Button>
 

@@ -6,10 +6,6 @@ import { handleDelete } from '../../utils/data'
 
 export const OptionBtn = ({id, pokemon, setPokemon}) => {
 
-  // const filterList = () => {
-  //   setPokemon( pokemon.filter(( e ) => id !== e.id))
-  // }
-
   return (
     <Stack direction='row' spacing={2}  >
         <Button
@@ -19,7 +15,6 @@ export const OptionBtn = ({id, pokemon, setPokemon}) => {
             variant='solid'
         >
         </Button>
-        
         <BtnUpdate />
     </Stack>
   )

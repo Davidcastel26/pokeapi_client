@@ -10,9 +10,7 @@ export const MenuOverlay = () => {
         </li>
         <li>
             <NavLink to="/types">Types</NavLink>
-
         </li>
-            {/* <ToggleColorMode /> */}
       </ul>
     )
   }

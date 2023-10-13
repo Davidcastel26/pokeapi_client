@@ -9,6 +9,8 @@ import {
   Button,
 } from "@chakra-ui/react";
 
+const url = import.meta.env.VITE_POKEMON_API || "http://localhost:8080";
+
 export const Form = ({ onClose }) => {
   const [form, setForm] = useState({
     name: "",
@@ -28,7 +30,7 @@ export const Form = ({ onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:8080/pokeapi/pokemon", {
+    await fetch(`${url}/pokeapi/pokemon`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

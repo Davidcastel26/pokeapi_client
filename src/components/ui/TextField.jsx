@@ -1,4 +1,3 @@
-// import {IntrinsicAttributes} from 'react'
 import {
     Field,
     useField} from "formik"
@@ -28,7 +27,6 @@ export const Textfield= (
   return (
     <FormControl isInvalid={isBooleand}>
         <FormLabel>{label}</FormLabel>
-        {/* <Input as={Field} {...field} {...props}/> */}
         <Input 
             as={Field} 
             {...field} 

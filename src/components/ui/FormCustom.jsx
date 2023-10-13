@@ -1,9 +1,6 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 
-
-
-
 const PokemonForm = ({ onClose}) => (
   <div>
     <h1>Crear un Pokémon</h1>

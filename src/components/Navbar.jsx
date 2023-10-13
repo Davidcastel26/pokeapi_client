@@ -1,10 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-// import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
-// import { CloseButton } from '@chakra-ui/react'
 import {HamburgerIcon, CloseIcon} from '@chakra-ui/icons'
 import { NavLink } from './NavLink'
-// import { navInfoLinks } from '../utils/data'
 import ToggleColorMode from './ui/btnColorMode'
 import { MenuOverlay } from './ui/MenuOverlay'
 
