@@ -15,7 +15,7 @@ export const Home = () => {
             </Text>
         </div>
         <div className="col-span-5 place-self-center mt-4 lg:mt-0">
-            <img src="src/assets/pokemon.png" alt="logo" />
+            <img src="../../assets/pokemon.png" alt="logo" />
         </div>
     </div>
   )
