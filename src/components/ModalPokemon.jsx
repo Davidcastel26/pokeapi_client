@@ -9,6 +9,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { Form } from "./Form";
+
 export const ModalPokemon = ({ finalRef, isOpen, onClose }) => {
   return (
     <>
