@@ -17,9 +17,10 @@ import { getDataApi, searchPokemonsApi } from '../utils/data';
 import { PagesPoke } from './ui/PagesPoke';
 
 export const TablePokemon = ({}) => {
+
   const [searchTerm, setSearchTerm] = useState('');
-    const [pokemon, setPokemon] = useState([])
-    const [page, setPage] = useState(1);
+  const [pokemon, setPokemon] = useState([])
+  const [page, setPage] = useState(1);
 
     useEffect(() => {
       if (searchTerm) {
@@ -40,7 +41,6 @@ export const TablePokemon = ({}) => {
 
   return (
     <>
-    <div>
     {/* <Stack spacing={3} direction='colum'> */}
     <div className=" w-full sm:w-fit ">
         <Input
@@ -104,7 +104,6 @@ export const TablePokemon = ({}) => {
     </Table>
     </TableContainer>
 
-    </div>
   </>
   )
 }
